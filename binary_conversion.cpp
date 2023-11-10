@@ -49,12 +49,13 @@ std::string toBase(double x, int m) {
 		integerPart /= m;
 	}
 
+
 	double fractionalPart = x - floor(x); // 小数部分
 	if (fractionalPart > 0) {
 		res += '.';
 		int fractionalDigits = 0;
 
-		while (fractionalPart > 0 && fractionalDigits < 6) {
+		while (fractionalPart > 0 && fractionalDigits < 8) {
 			fractionalPart *= m;
 			int digit = static_cast<int>(floor(fractionalPart + 1e-10));
 			char c = digit < 10 ? digit + '0' : digit - 10 + 'A';
@@ -67,4 +68,3 @@ std::string toBase(double x, int m) {
 	if (res == "") res = "0";  // 特判 x = 0 的情况
 	return res;
 }
-
